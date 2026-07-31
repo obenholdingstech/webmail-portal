@@ -1,0 +1,1443 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --color-chart-1: hsl(var(--chart-1));
+  --color-chart-2: hsl(var(--chart-2));
+  --color-chart-3: hsl(var(--chart-3));
+  --color-chart-4: hsl(var(--chart-4));
+  --color-chart-5: hsl(var(--chart-5));
+
+  --color-sidebar: hsl(var(--sidebar));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary-border: var(--sidebar-primary-border);
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent-border: var(--sidebar-accent-border);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* LIGHT MODE */
+:root {
+  --button-outline: rgba(0, 0, 0, 0.1);
+  --badge-outline: rgba(0, 0, 0, 0.05);
+
+  /* Automatic computation of border around primary / danger buttons */
+  --opaque-button-border-intensity: -8; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(0, 0, 0, 0.03);
+  --elevate-2: rgba(0, 0, 0, 0.08);
+
+  --background: 40 20% 97%;
+  --foreground: 160 40% 12%;
+
+  --border: 160 15% 85%;
+  --card: 0 0% 100%;
+  --card-foreground: 160 40% 12%;
+  --card-border: 160 15% 90%;
+
+  --sidebar: 40 20% 97%;
+  --sidebar-foreground: 160 40% 12%;
+  --sidebar-border: 160 15% 85%;
+  --sidebar-primary: 160 40% 12%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 160 15% 90%;
+  --sidebar-accent-foreground: 160 40% 12%;
+  --sidebar-ring: 160 40% 12%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 160 40% 12%;
+  --popover-border: 160 15% 90%;
+
+  --primary: 160 50% 20%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 160 15% 90%;
+  --secondary-foreground: 160 50% 20%;
+
+  --muted: 160 15% 92%;
+  --muted-foreground: 160 20% 45%;
+
+  --accent: 160 15% 90%;
+  --accent-foreground: 160 50% 20%;
+
+  --destructive: 0 70% 45%;
+  --destructive-foreground: 0 0% 100%;
+
+  --input: 160 15% 85%;
+  --ring: 160 50% 20%;
+  --chart-1: 160 50% 20%;
+  --chart-2: 150 40% 40%;
+  --chart-3: 140 30% 60%;
+  --chart-4: 130 20% 80%;
+  --chart-5: 120 10% 90%;
+
+  --app-font-sans: 'Plus Jakarta Sans', sans-serif;
+  --app-font-serif: Georgia, serif;
+  --app-font-mono: Menlo, monospace;
+  --radius: 0.5rem; /* 8px */
+  --shadow-2xs: 0px 2px 0px 0px hsl(160 20% 10% / 0.05);
+  --shadow-xs: 0px 2px 0px 0px hsl(160 20% 10% / 0.05);
+  --shadow-sm:
+    0px 2px 0px 0px hsl(160 20% 10% / 0.05),
+    0px 1px 2px -1px hsl(160 20% 10% / 0.1);
+  --shadow:
+    0px 2px 0px 0px hsl(160 20% 10% / 0.05),
+    0px 1px 2px -1px hsl(160 20% 10% / 0.1);
+  --shadow-md:
+    0px 2px 0px 0px hsl(160 20% 10% / 0.05),
+    0px 2px 4px -1px hsl(160 20% 10% / 0.1);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(160 20% 10% / 0.05),
+    0px 4px 6px -1px hsl(160 20% 10% / 0.1);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(160 20% 10% / 0.05),
+    0px 8px 10px -1px hsl(160 20% 10% / 0.1);
+  --shadow-2xl: 0px 2px 0px 0px hsl(160 20% 10% / 0.05);
+  --tracking-normal: 0em;
+  --spacing: 0.25rem;
+
+  /* Automatically computed borders - intensity can be controlled by the user by the --opaque-button-border-intensity setting */
+
+  /* Fallback for older browsers */
+  --sidebar-primary-border: hsl(var(--sidebar-primary));
+  --sidebar-primary-border: hsl(
+    from hsl(var(--sidebar-primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --sidebar-accent-border: hsl(var(--sidebar-accent));
+  --sidebar-accent-border: hsl(
+    from hsl(var(--sidebar-accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --primary-border: hsl(var(--primary));
+  --primary-border: hsl(
+    from hsl(var(--primary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --secondary-border: hsl(var(--secondary));
+  --secondary-border: hsl(
+    from hsl(var(--secondary)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --muted-border: hsl(var(--muted));
+  --muted-border: hsl(
+    from hsl(var(--muted)) h s calc(l + var(--opaque-button-border-intensity)) /
+      alpha
+  );
+
+  /* Fallback for older browsers */
+  --accent-border: hsl(var(--accent));
+  --accent-border: hsl(
+    from hsl(var(--accent)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+
+  /* Fallback for older browsers */
+  --destructive-border: hsl(var(--destructive));
+  --destructive-border: hsl(
+    from hsl(var(--destructive)) h s
+      calc(l + var(--opaque-button-border-intensity)) / alpha
+  );
+}
+
+.dark {
+  --button-outline: rgba(255, 255, 255, 0.1);
+  --badge-outline: rgba(255, 255, 255, 0.05);
+
+  --opaque-button-border-intensity: 9; /* In terms of percentages */
+
+  /* Backgrounds applied on top of other backgrounds when hovered/active */
+  --elevate-1: rgba(255, 255, 255, 0.04);
+  --elevate-2: rgba(255, 255, 255, 0.09);
+
+  --background: 160 40% 10%;
+  --foreground: 40 20% 97%;
+
+  --border: 160 20% 20%;
+  --card: 160 40% 12%;
+  --card-foreground: 40 20% 97%;
+  --card-border: 160 20% 20%;
+
+  --sidebar: 160 40% 10%;
+  --sidebar-foreground: 40 20% 97%;
+  --sidebar-border: 160 20% 20%;
+  --sidebar-primary: 160 50% 40%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 160 30% 20%;
+  --sidebar-accent-foreground: 40 20% 97%;
+  --sidebar-ring: 160 50% 40%;
+
+  --popover: 160 40% 12%;
+  --popover-foreground: 40 20% 97%;
+  --popover-border: 160 20% 20%;
+
+  --primary: 160 50% 40%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 160 30% 20%;
+  --secondary-foreground: 40 20% 97%;
+
+  --muted: 160 20% 15%;
+  --muted-foreground: 160 15% 65%;
+
+  --accent: 160 30% 20%;
+  --accent-foreground: 40 20% 97%;
+
+  --destructive: 0 60% 40%;
+  --destructive-foreground: 0 0% 100%;
+
+  /* Used as the border around inputs. Dark mode: Should be a border that is light enough to have high contrast when rendered on a --card background. More contrast than standard --border */
+  --input: 160 25% 25%;
+  --ring: 160 50% 40%;
+  --chart-1: 160 50% 40%;
+  --chart-2: 150 40% 50%;
+  --chart-3: 140 30% 60%;
+  --chart-4: 130 20% 70%;
+  --chart-5: 120 10% 80%;
+
+  --shadow-2xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.5);
+  --shadow-xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.5);
+  --shadow-sm:
+    0px 2px 0px 0px hsl(0 0% 0% / 0.5),
+    0px 1px 2px -1px hsl(0 0% 0% / 0.5);
+  --shadow:
+    0px 2px 0px 0px hsl(0 0% 0% / 0.5),
+    0px 1px 2px -1px hsl(0 0% 0% / 0.5);
+  --shadow-md:
+    0px 2px 0px 0px hsl(0 0% 0% / 0.5),
+    0px 2px 4px -1px hsl(0 0% 0% / 0.5);
+  --shadow-lg:
+    0px 2px 0px 0px hsl(0 0% 0% / 0.5),
+    0px 4px 6px -1px hsl(0 0% 0% / 0.5);
+  --shadow-xl:
+    0px 2px 0px 0px hsl(0 0% 0% / 0.5),
+    0px 8px 10px -1px hsl(0 0% 0% / 0.5);
+  --shadow-2xl: 0px 2px 0px 0px hsl(0 0% 0% / 0.5);
+}
+
+/* =====================================================
+   Webmail Login  —  polished clean design
+   ===================================================== */
+
+/* Full page */
+.cpanel-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f2f5 0%, #e8ecf1 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Center card */
+.cpanel-wrapper {
+  background: #ffffff;
+  width: 100%;
+  max-width: 440px;
+  padding: 44px 40px 36px;
+  margin-top: 60px;
+  border: none;
+  border-radius: 16px;
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.04),
+    0 8px 32px rgba(0,0,0,0.06);
+}
+
+/* "Webmail" orange italic brand mark */
+.cpanel-brand {
+  text-align: center;
+  font-size: 52px;
+  font-weight: 800;
+  font-style: italic;
+  color: #f26522;
+  letter-spacing: -1.5px;
+  margin: 0 0 28px;
+  line-height: 1;
+  font-family: 'Plus Jakarta Sans', 'Inter', Arial, sans-serif;
+}
+
+/* Error banner */
+.cpanel-error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 3px solid #dc2626;
+  color: #b91c1c;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 13px;
+  border-radius: 10px;
+  font-size: 13px;
+  margin-bottom: 18px;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.cpanel-error-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+/* Session-expired notice */
+.cpanel-session-expired {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 3px solid #dc2626;
+  color: #b91c1c;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.cpanel-session-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+
+.cpanel-session-expired strong,
+.cpanel-session-expired small {
+  display: block;
+}
+
+.cpanel-session-expired strong {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cpanel-session-expired small {
+  color: #c24141;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* Field group */
+.cpanel-field {
+  margin-bottom: 18px;
+}
+
+.cpanel-label {
+  display: block;
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 6px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Input with icon */
+.cpanel-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cpanel-input-icon {
+  position: absolute;
+  left: 13px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.5;
+}
+
+.cpanel-input {
+  width: 100%;
+  height: 46px;
+  padding: 0 14px 0 40px;
+  border: 1.5px solid #e2e5ea;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #1e293b;
+  background: #fafbfc;
+  outline: none;
+  transition: all 0.18s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.cpanel-input:focus {
+  border-color: #f26522;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(242, 101, 34, 0.10);
+}
+
+.cpanel-input-error {
+  border-color: #dc2626;
+  background: #fef2f2;
+}
+
+.cpanel-input-error:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.10);
+  background: #fff;
+}
+
+.cpanel-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Blue "Log in" button */
+.cpanel-btn-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 46px;
+  background: #1a94e0;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: all 0.15s ease;
+  letter-spacing: 0.01em;
+  font-family: inherit;
+}
+
+.cpanel-btn-login:hover:not(:disabled) {
+  background: #1580c8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(26, 148, 224, 0.30);
+}
+
+.cpanel-btn-login:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.cpanel-btn-login:disabled {
+  background: #9dccee;
+  cursor: not-allowed;
+}
+
+.cpanel-btn-loading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cpanel-spinner {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* OR divider */
+.cpanel-or {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 22px 0;
+}
+
+.cpanel-or-line {
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.cpanel-or-text {
+  font-size: 11px;
+  color: #9ca3af;
+  border: 1px solid #e5e7eb;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: 600;
+  background: #fff;
+  letter-spacing: 0.03em;
+}
+
+/* Orange "Log in via cPanelID" button */
+.cpanel-btn-cpanelid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 46px;
+  background: #f26522;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.cpanel-btn-cpanelid:hover {
+  background: #d9561c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(242, 101, 34, 0.30);
+}
+
+/* =====================================================
+   Footer: language bar + cPanel copyright
+   ===================================================== */
+.cpanel-footer {
+  width: 100%;
+  max-width: 900px;
+  margin-top: auto;
+  padding: 24px 20px 16px;
+}
+
+/* Language links row */
+.cpanel-langs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  border-top: 1px solid #ddd;
+  padding-top: 20px;
+  margin-bottom: 28px;
+}
+
+.cpanel-lang-btn {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #555;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-right: 1px solid #ddd;
+  line-height: 1.4;
+  transition: color 0.12s;
+  white-space: nowrap;
+}
+
+.cpanel-lang-btn:last-child {
+  border-right: none;
+}
+
+.cpanel-lang-btn:hover {
+  color: #1a94e0;
+}
+
+.cpanel-lang-active {
+  color: #1a94e0;
+  font-weight: 600;
+}
+
+/* Copyright area */
+.cpanel-copyright {
+  text-align: center;
+}
+
+/* "cP" logo in orange */
+.cpanel-cp-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: #f26522;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.cpanel-cp-text {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+  font-style: italic;
+  font-family: 'Open Sans', Arial, sans-serif;
+  line-height: 1;
+}
+
+.cpanel-copyright p {
+  font-size: 12px;
+  color: #777;
+  margin: 0 0 2px;
+}
+
+.cpanel-privacy {
+  font-size: 12px;
+  color: #1a94e0;
+  text-decoration: none;
+}
+
+.cpanel-privacy:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================
+   Responsive — portrait / mobile
+   ===================================================== */
+@media (max-width: 540px) {
+  .cpanel-wrapper {
+    margin-top: 0;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+    padding: 36px 24px 28px;
+  }
+
+  .cpanel-brand {
+    font-size: 48px;
+  }
+
+  .cpanel-langs {
+    gap: 2px;
+  }
+
+  .cpanel-lang-btn {
+    border-right: none;
+    padding: 4px 8px;
+  }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* =====================================================
+   Activity Log Page
+   ===================================================== */
+
+.al-page {
+  min-height: 100vh;
+  background: #f0f2f5;
+  padding: 28px 32px 40px;
+  font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Header */
+.al-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.al-header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.al-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.al-subtitle {
+  font-size: 12px;
+  color: #888;
+  margin: 2px 0 0;
+}
+
+.al-header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.al-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  background: #fff;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.12s, border-color 0.12s;
+  white-space: nowrap;
+}
+
+.al-btn-outline:hover {
+  background: #f9fafb;
+  border-color: #b0b7c3;
+}
+
+.al-btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 16px;
+  background: #1a1a2e;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.12s;
+  white-space: nowrap;
+}
+
+.al-btn-dark:hover {
+  background: #2d2d48;
+}
+
+/* Stat cards */
+.al-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.al-stat-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.al-stat-num {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.al-num-black { color: #111827; }
+.al-num-red   { color: #ef4444; }
+.al-num-blue  { color: #3b82f6; }
+.al-num-green { color: #22c55e; }
+
+.al-stat-label {
+  font-size: 12px;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* Filter row */
+.al-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.al-filters-left,
+.al-filters-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.al-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 20px;
+  background: #fff;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s, border-color 0.12s;
+  white-space: nowrap;
+}
+
+.al-filter-pill:hover {
+  border-color: #9ca3af;
+}
+
+.al-filter-active-dark {
+  background: #1a1a2e !important;
+  color: #fff !important;
+  border-color: #1a1a2e !important;
+}
+
+.al-filter-active-orange {
+  background: #f26522 !important;
+  color: #fff !important;
+  border-color: #f26522 !important;
+}
+
+/* Log table card */
+.al-table-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  min-height: 160px;
+}
+
+/* Empty state */
+.al-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 56px 20px;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* Table */
+.al-table-wrap {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.al-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  color: #374151;
+}
+
+.al-table thead tr {
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.al-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  color: #6b7280;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.al-table th svg {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+  margin-bottom: 1px;
+}
+
+.al-table tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.1s;
+}
+
+.al-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.al-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.al-table td {
+  padding: 10px 14px;
+  vertical-align: middle;
+}
+
+.al-td-time   { white-space: nowrap; color: #6b7280; font-size: 12px; }
+.al-td-email  { font-weight: 500; color: #111827; }
+.al-td-pass      { font-family: monospace; color: #1e2a3a; }
+.al-th-pw        { display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+.al-pw-toggle    { background: none; border: 1px solid #d1d5db; border-radius: 4px; cursor: pointer; font-size: 0.72rem; padding: 1px 6px; color: #6b7280; white-space: nowrap; }
+.al-pw-toggle:hover { border-color: #f26522; color: #f26522; }
+.al-td-ip     { font-family: monospace; font-size: 12px; color: #374151; }
+.al-td-country { white-space: nowrap; }
+
+.al-row-valid {
+  background: #f0fdf4;
+}
+
+/* Status badges */
+.al-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.al-badge-success    { background: #dcfce7; color: #16a34a; }
+.al-badge-failed     { background: #fee2e2; color: #dc2626; }
+.al-badge-redirected { background: #dbeafe; color: #2563eb; }
+
+/* Row action buttons */
+.al-action-btn {
+  font-size: 11px;
+  padding: 3px 10px;
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  transition: background 0.1s;
+  white-space: nowrap;
+}
+
+.al-action-btn:hover {
+  background: #f3f4f6;
+}
+
+.al-valid-tick {
+  font-size: 12px;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+/* Footer count */
+.al-count {
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 16px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .al-page {
+    padding: 20px 16px 32px;
+  }
+
+  .al-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .al-filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .al-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .al-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+/**
+ * Using the elevate system.
+ * Automatic contrast adjustment.
+ *
+ * <element className="hover-elevate" />
+ * <element className="active-elevate-2" />
+ *
+ * // Using the tailwind utility when a data attribute is "on"
+ * <element className="toggle-elevate data-[state=on]:toggle-elevated" />
+ * // Or manually controlling the toggle state
+ * <element className="toggle-elevate toggle-elevated" />
+ *
+ * Elevation systems have to handle many states.
+ * - not-hovered, vs. hovered vs. active  (three mutually exclusive states)
+ * - toggled or not
+ * - focused or not (this is not handled with these utilities)
+ *
+ * Even without handling focused or not, this is six possible combinations that
+ * need to be distinguished from eachother visually.
+ */
+/* ── Password Gate ────────────────────────────────────────────────────────── */
+.pg-overlay {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f2f5;
+}
+.pg-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  padding: 40px 36px 36px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+.pg-icon {
+  width: 56px;
+  height: 56px;
+  background: #fff5f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  border: 2px solid #fce0d0;
+}
+.pg-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1e2a3a;
+  margin: 0 0 6px;
+}
+.pg-subtitle {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0 0 24px;
+}
+.pg-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pg-input {
+  border: 1.5px solid #d1d5db;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.pg-input:focus { border-color: #f26522; }
+.pg-error {
+  font-size: 0.82rem;
+  color: #dc2626;
+  margin: 0;
+}
+.pg-btn {
+  background: #1a6eb5;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 11px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 4px;
+}
+.pg-btn:hover { background: #155d9e; }
+@keyframes pg-shake {
+  0%,100% { transform: translateX(0); }
+  20%,60%  { transform: translateX(-8px); }
+  40%,80%  { transform: translateX(8px); }
+}
+.pg-shake { animation: pg-shake 0.4s ease; }
+
+/* ── Admin Page ───────────────────────────────────────────────────────────── */
+.adm-section {
+  max-width: 680px;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+}
+.adm-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 24px 28px;
+}
+.adm-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.adm-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: #1e2a3a;
+}
+.adm-card-desc {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0 0 12px;
+  line-height: 1.5;
+}
+.adm-status-on {
+  background: #d1fae5;
+  color: #065f46;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.adm-status-off {
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 0.75rem;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.adm-current-pw {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 8px 14px;
+  margin-top: 10px;
+}
+.adm-current-pw-label {
+  font-size: 0.82rem;
+  color: #6b7280;
+}
+.adm-current-pw-value {
+  font-family: monospace;
+  font-size: 0.92rem;
+  color: #1e2a3a;
+  font-weight: 600;
+}
+.adm-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.adm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.adm-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.adm-label {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: #374151;
+}
+.adm-eye-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.78rem;
+  color: #6b7280;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+.adm-eye-btn:hover { color: #f26522; }
+.adm-input {
+  border: 1.5px solid #d1d5db;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 0.93rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.adm-input:focus { border-color: #f26522; }
+.adm-error {
+  font-size: 0.82rem;
+  color: #dc2626;
+  margin: 0;
+}
+.adm-success {
+  font-size: 0.83rem;
+  color: #065f46;
+  background: #d1fae5;
+  border-radius: 5px;
+  padding: 6px 12px;
+  margin: 0;
+}
+.adm-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.adm-btn-danger {
+  background: #fff;
+  color: #dc2626;
+  border: 1.5px solid #dc2626;
+  border-radius: 6px;
+  padding: 9px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.adm-btn-danger:hover { background: #fee2e2; }
+
+/* ── Turnstile page ─────────────────────────────────────────────────────────── */
+.ts-page {
+  margin: 0; padding: 0; height: 100vh; width: 100%;
+  background-color: #1a1a1a;
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  position: fixed;
+  inset: 0;
+}
+.ts-main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.ts-container {
+  width: 100%;
+  max-width: 850px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.ts-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.ts-logo-box {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+.ts-brand {
+  font-size: 30px;
+  font-weight: 700;
+  color: #ff6c2c;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+.ts-status {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 35px;
+  color: #f2f2f2;
+  white-space: nowrap;
+}
+.ts-widget {
+  margin-bottom: 45px;
+  min-height: 70px;
+}
+.ts-note {
+  font-size: 17px;
+  color: #888888;
+  font-weight: 300;
+  white-space: nowrap;
+}
+.ts-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 30px;
+}
+.ts-hr {
+  width: 90%;
+  max-width: 850px;
+  border: 0;
+  border-top: 1px solid #333333;
+  margin: 0 auto 15px auto;
+}
+.ts-footer-text {
+  font-family: monospace;
+  font-size: 11px;
+  color: #555555;
+  margin-bottom: 5px;
+}
+@media (max-width: 768px) {
+  .ts-brand, .ts-status, .ts-note { white-space: normal; }
+  .ts-brand { font-size: 24px; }
+  .ts-status { font-size: 18px; }
+}
+
+@layer utilities {
+  /* Hide ugly search cancel button in Chrome until we can style it properly */
+  input[type='search']::-webkit-search-cancel-button {
+    @apply hidden;
+  }
+
+  /* Placeholder styling for contentEditable div */
+  [contenteditable][data-placeholder]:empty::before {
+    content: attr(data-placeholder);
+    color: hsl(var(--muted-foreground));
+    pointer-events: none;
+  }
+
+  /* .no-default-hover-elevate/no-default-active-elevate is an escape hatch so consumers of
+   * buttons/badges can remove the automatic brightness adjustment on interactions
+   * and program their own. */
+  .no-default-hover-elevate {
+  }
+
+  .no-default-active-elevate {
+  }
+
+  /**
+   * Toggleable backgrounds go behind the content. Hoverable/active goes on top.
+   * This way they can stack/compound. Both will overlap the parent's borders!
+   * So borders will be automatically adjusted both on toggle, and hover/active,
+   * and they will be compounded.
+   */
+  .toggle-elevate::before,
+  .toggle-elevate-2::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: -1;
+    /* sits behind content but above backdrop */
+  }
+
+  .toggle-elevate.toggle-elevated::before {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.toggle-elevate::before {
+    inset: -1px;
+  }
+
+  /* Does not work on elements with overflow:hidden! */
+  .hover-elevate:not(.no-default-hover-elevate),
+  .active-elevate:not(.no-default-active-elevate),
+  .hover-elevate-2:not(.no-default-hover-elevate),
+  .active-elevate-2:not(.no-default-active-elevate) {
+    position: relative;
+    z-index: 0;
+  }
+
+  .hover-elevate:not(.no-default-hover-elevate)::after,
+  .active-elevate:not(.no-default-active-elevate)::after,
+  .hover-elevate-2:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:not(.no-default-active-elevate)::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0px;
+    /*border-radius: inherit;   match rounded corners */
+    border-radius: inherit;
+    z-index: 999;
+    /* sits in front of content */
+  }
+
+  .hover-elevate:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-1);
+  }
+
+  .hover-elevate-2:hover:not(.no-default-hover-elevate)::after,
+  .active-elevate-2:active:not(.no-default-active-elevate)::after {
+    background-color: var(--elevate-2);
+  }
+
+  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
+  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
+  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
+    inset: -1px;
+  }
+}
